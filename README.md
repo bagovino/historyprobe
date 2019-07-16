@@ -5,7 +5,7 @@ Note: In order dump Safari history on Mojave+ historyprobe must be granted Full 
 
 To build from source run the following command in a terminal from the project root directory:
 ```bash
-swift build -Xswiftc "-import-objc-header" -Xswiftc "Sources/historyprobe/historyprobe-Bridging-Header.h"
+swift build -Xswiftc "-import-objc-header" -Xswiftc "Sources/historyprobe/historyprobe-Bridging-Header.h" --static-swift-stdlib -c release
 ```
 
 If working in Xcode is desired run the following command to create an Xcode project from a terminal in the project root directory:
