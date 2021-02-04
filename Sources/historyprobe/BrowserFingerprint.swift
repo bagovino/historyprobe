@@ -2,19 +2,13 @@
 //  BrowserFingerprint.swift
 //
 
-struct BrowserFingerprint {
-    enum FingerprintType {
+struct BrowserFingerprint: Codable {
+    enum FingerprintType: String, Codable {
         case filename
         case filecontents
     }
     
-    var type: FingerprintType
-    var subject: String
-    var matchValue: String
-    
-    init(type: FingerprintType, subject: String, matchValue: String) {
-        self.type = type
-        self.subject = subject
-        self.matchValue = matchValue
-    }
+    let type: FingerprintType
+    let subject: String
+    let matchValue: String
 }

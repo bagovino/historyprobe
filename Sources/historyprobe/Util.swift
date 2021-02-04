@@ -23,7 +23,7 @@ func getAllUsers() -> [String] {
     return allUsers
 }
 
-func getBrowserHistory(dbPath: String, dbName: String, query: String, browser: BrowserType) -> [HistoryEntry] {
+func getBrowserHistory(dbPath: String, dbName: String, query: String, browser: Browser.BrowserType) -> [HistoryEntry] {
     var history = [HistoryEntry]()
     var db: OpaquePointer?
     
@@ -46,7 +46,7 @@ func getBrowserHistory(dbPath: String, dbName: String, query: String, browser: B
     while sqlite3_step(stmt) == SQLITE_ROW {
         let visit_time = Double(sqlite3_column_int64(stmt, 0))
         var timeStamp = Date()
-        if browser == .chrome || browser == .edge || browser == .opera {
+        if browser == .chromium {
             // Chromium browsers are weird and store time as the seconds since 01/01/1601
             timeStamp = Date(timeIntervalSince1970: (visit_time / 1000000) - 11644473600)
         } else if browser == .firefox {
