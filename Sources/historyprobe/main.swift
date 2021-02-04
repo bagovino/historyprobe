@@ -11,7 +11,7 @@ do {
     let decoder = JSONDecoder()
     browsers = try decoder.decode([Browser].self, from: data!)
 } catch {
-    print(error.localizedDescription)
+    print("error reading browser json")
     exit(1)
 }
 
