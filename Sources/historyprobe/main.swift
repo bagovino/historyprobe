@@ -5,11 +5,15 @@
 import Foundation
 
 print("initializing")
-let browsers: [Browser]
+var browsers: [Browser] = [Browser]()
 do {
-    let data = FileManager.default.contents(atPath: FileManager.default.currentDirectoryPath + "/browsers.json")
-    let decoder = JSONDecoder()
-    browsers = try decoder.decode([Browser].self, from: data!)
+    if let filepath = Bundle.main.path(forResource: "browsers", ofType: "json") {
+        do {
+            let data = try String(contentsOfFile: filepath).data(using: .utf8)
+            let decoder = JSONDecoder()
+            browsers.append(contentsOf: try decoder.decode([Browser].self, from: data!))
+        }
+    }
 } catch {
     print("error reading browser json")
     exit(1)
