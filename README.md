@@ -14,4 +14,4 @@ swift package generate-xcodeproj
 ```
 Open up the Xcode project created and then go to historyprobe Project Setttings -> Build Settings -> Swift Compiler - General -> Objective-C Bridging Header enter the following value **Sources/historyprobe/historyprobe-Bridging-Header.h**. Hit the play button to build and run the project.
 
-Before running please move the **browsers.json** file into the same path as the executable. Swift CLI applications are not created with a Bundle so there's no good way to include it with the executable that I've found.
+To include **browsers.json** as a Resource in the main bundle, open up the Xcode project and then go to historyprobe Project Settings -> Build Phases -> Click + in the upper left -> Select New Copy File Phase -> Select Resources -> Click the + -> Select browsers.json
