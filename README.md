@@ -12,6 +12,9 @@ To create an Xcode project run the following command from a terminal in the proj
 ```bash
 swift package generate-xcodeproj
 ```
-Open up the Xcode project created and then go to historyprobe Project Setttings -> Build Settings -> Swift Compiler - General -> Objective-C Bridging Header enter the following value **Sources/historyprobe/historyprobe-Bridging-Header.h**. Hit the play button to build and run the project.
 
-To include **browsers.json** as a Resource in the main bundle, open up the Xcode project and then go to historyprobe Project Settings -> Build Phases -> Click + in the upper left -> Select New Copy File Phase -> Select Resources -> Click the + -> Select browsers.json
+To build the project first do these two things under the historyprobe project settings:
+* Go to Build Settings -> Swift Compiler - General -> Objective-C Bridging Header enter the following value **Sources/historyprobe/historyprobe-Bridging-Header.h**. 
+* Go to Build Phases -> Click + in the upper left -> Select New Copy File Phase -> Select Resources -> Click the + -> Select browsers.json
+
+Hit the play button to build and run the project.
