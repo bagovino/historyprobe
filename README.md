@@ -3,11 +3,6 @@ Utility made to dump multiple browser's history across all users to CSV on MacOS
 
 Note: In order dump Safari history on Mojave+ historyprobe must be granted Full Disk Access under System Preferences -> Security & Privacy -> Privacy -> Full Disk Access.
 
-To build from source run the following command in a terminal from the project root directory:
-```bash
-swift build -Xswiftc "-import-objc-header" -Xswiftc "Sources/historyprobe/historyprobe-Bridging-Header.h" --static-swift-stdlib -c release
-```
-
 To create an Xcode project run the following command from a terminal in the project root directory:
 ```bash
 swift package generate-xcodeproj
