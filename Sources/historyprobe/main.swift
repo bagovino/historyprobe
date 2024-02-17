@@ -7,13 +7,9 @@ import Foundation
 print("initializing")
 var browsers: [Browser] = [Browser]()
 do {
-    if let filepath = Bundle.main.path(forResource: "browsers", ofType: "json") {
-        do {
-            let data = try String(contentsOfFile: filepath).data(using: .utf8)
-            let decoder = JSONDecoder()
-            browsers.append(contentsOf: try decoder.decode([Browser].self, from: data!))
-        }
-    }
+    let data = BrowserDefinitions.string.data(using: .utf8)
+    let decoder = JSONDecoder()
+    browsers.append(contentsOf: try decoder.decode([Browser].self, from: data!))
 } catch {
     print("error reading browser json")
     exit(1)
@@ -66,8 +62,9 @@ allHistory.append("Timestamp,URL,Title,Account,Browser,Profile\n")
 for browser in browsers {
     for browserProfile in allHistoryMap[browser] ?? [String]() {
         let user = browserProfile.getUserFromPath()
-        let profilePosition = browserProfile.lastIndexOfCharacter("/")! + 1
-        let profileName = browserProfile.substring(from: profilePosition)
+        var profilePosition = browserProfile.lastIndex(of: "/")
+        profilePosition = browserProfile.index(profilePosition!, offsetBy: 1)
+        let profileName = String(browserProfile[profilePosition!...])
         let history = getBrowserHistory(dbPath: browserProfile + "/", dbName: browser.storeName, query: browser.query, browser: browser.type)
         history.forEach { allHistory.append("\($0.timeStamp),\($0.url),\($0.title),\(user),\(browser.longName),\(profileName)\n") }
     }

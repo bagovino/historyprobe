@@ -3,10 +3,6 @@
 //
 
 extension String {
-    func lastIndexOfCharacter(_ c: Character) -> Int? {
-        return range(of: String(c), options: .backwards)?.lowerBound.utf16Offset(in: String(c))
-    }
-    
     func getUserFromPath() -> String {
         guard self.starts(with: "/Users/") else {
             return ""

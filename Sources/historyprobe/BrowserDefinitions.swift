@@ -1,3 +1,11 @@
+//
+//  BrowserDefinitions.swift
+//
+
+import Foundation
+
+struct BrowserDefinitions {
+    static let string = """
 [{
         "longName": "Brave",
         "type": "chromium",
@@ -104,3 +112,5 @@
         }
     }
 ]
+"""
+}
